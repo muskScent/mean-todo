@@ -1,0 +1,14 @@
+<article class="panel panel-default">
+  <div class="panel-body description">
+    <p class="pull-left">{{ task.description }}</p>
+  </div>
+  <footer class="panel-footer">
+    <div class="dueDate">
+      {{ task.dueDate }}
+    </div>
+    <div class="config">
+      <a href="" (click)="onEdit()">Edit</a>
+      <a href="" (click)="delete()">Delete</a>
+    </div>
+  </footer>
+</article>
