@@ -6,9 +6,9 @@ var Todo = require('../models/Todo.model');
 var Task = require('../models/Task.model');
 
 // Get all tasks by user~
-router.get('/todos', (req, res) => {
+router.get('/todos/:userId', (req, res) => {
   Todo.find({
-    _id: req.userData._id
+    _id: req.params.userId
   })
     .exec(function(err, todos) {
       if (err) {
