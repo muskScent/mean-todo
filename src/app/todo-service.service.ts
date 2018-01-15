@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Todo } from './todo/todo.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class TodoServiceService {
   tasks: Todo[] = [];
   token: String;
+  taskIsEdit = new EventEmitter<Todo>();
 
   constructor(private http: HttpClient) {}
 
@@ -13,11 +14,15 @@ export class TodoServiceService {
     this.tasks.push(task);
   }
 
-  getUserTasks(userId: String) {
+  getUserTasks() {
     this.token = localStorage.getItem('token');
-    return this.http.get('http://localhost:3000/api/todos/1',{
+    return this.http.get('http://localhost:3000/api/todos',{
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token),})
       .map((response: Response) => {return response});
+  }
+
+  editTask(todo: Todo) {
+    this.taskIsEdit.emit(todo);
   }
 
   deleteTask(task: Todo) {

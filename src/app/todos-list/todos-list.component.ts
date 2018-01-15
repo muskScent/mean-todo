@@ -15,13 +15,14 @@ export class TodosListComponent implements OnInit {
 
   ngOnInit() {
     const token = localStorage.getItem('token');
-    this.todoService.getUserTasks('1')
+    this.todoService.getUserTasks()
       .subscribe(
         (response: any) => { this.tasks = response[0].tasks},
       (errors) => { console.log('errors occurred: ' + errors) });
   }
 
-  editClicked() {    
+  editClicked() {   
+   
   }
 
 }
