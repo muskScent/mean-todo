@@ -21,7 +21,8 @@ router.post('/login', (req, res) => {
             const userPassword = todo.userData.password;
             const enteredLogin = req.body.login;
             const userLogin = todo.userData.login;
-            if (enteredPassword === userPassword && enteredLogin === userLogin) {
+            
+            if (bcrypt.compareSync(enteredPassword, userPassword) && enteredLogin === userLogin) {
                 jwt.sign({_id: todo._id, user: todo.userData}, 'secretkey', (err, token) => {
                     res.json({
                         token: token
