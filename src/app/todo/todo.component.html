@@ -9,6 +9,10 @@
     <div class="config">
       <button class="btn btn-primary" (click)="onEdit()">Edit</button>
       <button class="btn btn-primary" (click)="delete()">Delete</button>
-    </div>
+    </div> 
+    <hr>
+    <textarea #textAreaContent (click)="clearTextArea()" class="form-control" rows="4" cols="20">
+      {{ defaultTextAreaContent }} 
+    </textarea>
   </footer>
 </article>

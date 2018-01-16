@@ -14,7 +14,6 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth-service.service';
 import { RouterModule, Router } from '@angular/router';
-import { TodoInputComponent } from './todo-input/todo-input.component';
 import { TodoServiceService } from './todo-service.service';
 
 @NgModule({
@@ -25,8 +24,7 @@ import { TodoServiceService } from './todo-service.service';
     TodoComponent,
     TodosComponent,
     TodosListComponent,
-    HeaderComponent,
-    TodoInputComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule, FormsModule, routing, ReactiveFormsModule, HttpModule, HttpClientModule
