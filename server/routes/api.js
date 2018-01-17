@@ -20,15 +20,18 @@ router.get('/todos', (req, res) => {
 });
 
 // Create task for user
-router.post('/newTodo', (req, res) => {
-  //var newTask = new Task(req.body.description, req.body.dueDate);
+router.post('/newTask', (req, res) => {
+  var newTask = new Task();
+
+  newTask.description = req.body.description;
+  newTask.dueDate = 'ASAP';
 
   Todo.findById(req.userData._id, function(err, todo) {
     if (err) {
       console.log('err: ' + err);
     } else {
       var tasks = todo.tasks;
-      tasks.push({description: req.body.description, dueDate: req.body.dueDate});
+      tasks.push(newTask);
       res.send(tasks);
       todo.tasks = tasks;
       todo.save(function(err) {        
@@ -38,16 +41,16 @@ router.post('/newTodo', (req, res) => {
 });
 
 // Delete a todo for a user
-router.delete('/todo/:taskId', (req, res) => {
+router.delete('/deleteTask/:taskNumber', (req, res) => {
   Todo.findById(req.userData._id, function(err, todo) {
     if (err) {
       console.log('err: ' + err);
     } else {
-      var taskId = req.params.taskId;
+      var taskNumber = req.params.taskNumber;
       var tasks = todo.tasks;
       res.send(tasks);
       for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i]._id = taskId) {
+        if (tasks[i]._taskNumber === taskNumber) {
           tasks.splice(i, 1);
         }
       }
@@ -59,21 +62,23 @@ router.delete('/todo/:taskId', (req, res) => {
 });
 
 // Update a todo
-router.get('/todo/:taskId/:description/:dueDate', function(req, res) {
-  console.log('got here');
+router.put('/updateTodo/:_taskNumber/:description/:dueDate', function(req, res) {
   Todo.findById(req.userData._id, function(err, todo) {
     if (err) {
       console.log('err: ' + err);
     } else {
-      var taskId = req.params.taskId;
+      var _taskNumber = req.params._taskNumber;
       var tasks = todo.tasks;
-      res.send(tasks);
+      var tmp;
       for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i]._id = taskId) {
+        console.log('entered task number: ' + _taskNumber);
+        if (i == _taskNumber - 1) {
           tasks[i].description = req.params.description;
           tasks[i].dueDate = req.params.dueDate;
+          tmp = tasks[i];
         }
       }
+      res.send(tmp);
       todo.tasks = tasks;
       todo.save(function(err) {        
       })

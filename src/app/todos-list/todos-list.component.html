@@ -3,6 +3,7 @@
     <app-todo 
         [task]="task" 
         (editClicked)="task.description = $event" 
+        (taskDeleted)="deleteTask($event)"
         *ngFor="let task of tasks">
     </app-todo>
   </div>

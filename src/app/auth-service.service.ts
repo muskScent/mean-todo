@@ -3,14 +3,11 @@ import { Http, Headers, Response } from "@angular/http";
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
 
-//import { User } from "./user.model";
-
 @Injectable()
 export class AuthService {
     constructor(private http: Http) {}
 
     login(login: String, password: String) {
-      console.log('Logging in service');
       const body = JSON.stringify({
         login: login,
         password: password

@@ -3,12 +3,12 @@
     <p class="pull-left">{{ task.description }}</p>
   </div>
   <footer class="panel-footer">
-    <div class="dueDate">
+    <!-- <div class="dueDate">
       {{ task.dueDate }}
-    </div>
+    </div> -->
     <div class="config">
       <button class="btn btn-primary" (click)="onEdit()">Edit</button>
-      <button class="btn btn-primary" (click)="delete()">Delete</button>
+      <button class="btn btn-primary" (click)="onDelete()">Delete</button>
     </div> 
     <hr>
     <textarea #textAreaContent (click)="clearTextArea()" class="form-control" rows="4" cols="20">

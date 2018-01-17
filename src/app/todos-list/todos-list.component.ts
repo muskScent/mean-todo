@@ -14,15 +14,14 @@ export class TodosListComponent implements OnInit {
   constructor(private todoService: TodoServiceService) { }
 
   ngOnInit() {
-    const token = localStorage.getItem('token');
     this.todoService.getUserTasks()
       .subscribe(
-        (response: any) => { this.tasks = response[0].tasks},
+        (response: any) => { this.tasks = response[0].tasks },
       (errors) => { console.log('errors occurred: ' + errors) });
   }
 
-  editClicked() {   
-   
+  deleteTask(event: Event) {
+    console.log('Deleting task: ' + JSON.stringify(event));
   }
 
 }

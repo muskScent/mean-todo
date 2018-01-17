@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submitted');
     let event = new MouseEvent('click', {bubbles: true});
     this.authService.login(this.myForm.value.login, this.myForm.value.password)
       .subscribe(

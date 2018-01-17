@@ -9,12 +9,9 @@ const Todo = require('../models/Todo.model');
 const router = express.Router();
 
 router.post('/login', (req, res) => {
-    console.log('Got here');
-    console.log('Login: ' + req.body.login);
     // Check if user exists
     Todo.findOne({'userData.login': req.body.login}, (err, todo) => {
         if (err) {
-            console.log('Cannot login: ' + err);
             res.redirect('/login');
         } else {
             const enteredPassword = req.body.password;
