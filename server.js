@@ -3,13 +3,22 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const verifyToken = require('./server/authentication/verifytoken');
 const morgan = require('morgan');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
 
-// Connecting to database
-mongoose.connect('mongodb://localhost/tasks');
+const Sequelize = require('sequelize');
+
+var connection = new Sequelize('tasks_db', 'root', 'root', {
+  host: 'localhost',
+  dialect: 'mysql',
+  define: {
+    timestamps: false
+  }
+});
+
+// Connecting to database 
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -26,7 +35,9 @@ app.use(morgan('dev'));
 
 // Parsers for POST data
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));

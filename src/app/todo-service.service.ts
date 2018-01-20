@@ -1,43 +1,38 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Todo } from './todo/todo.model';
+import { Task } from './todo/task.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class TodoServiceService {
-  tasks: Todo[] = [];
-  token: String;
-  taskIsEdit = new EventEmitter<Todo>();
+  tasks: Task[] = [];
+  taskIsEdit = new EventEmitter<Task>();
 
   constructor(private http: HttpClient) {}
 
-  createTask(task: Todo) {
-    return this.http.post('http://localhost:3000/api/newTask', task, 
-    { headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token) });
-  }
-
   getUserTasks() {
-    this.token = localStorage.getItem('token');
-
-    return this.http.get('http://localhost:3000/api/todos', {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)})
+    return this.http.get('http://localhost:3000/api/tasks', {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))})
       .map((response: Response) => {return response});
   }
 
-  updateTask(_taskNumber:Number, newDescription: String, newDueDate: String) {
-    this.token = localStorage.getItem('token');
+  createTask(task: Task) {
+    return this.http.post('http://localhost:3000/api/newTask', task, 
+    { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
+  }
 
-    return this.http.put('http://localhost:3000/api/updateTodo/' + _taskNumber + '/' + newDescription + '/' + newDueDate, null, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token)})
+  updateTask(task_id:Number, newDescription: String) {
+    return this.http.put('http://localhost:3000/api/updateTask/' + task_id + '/' + newDescription, null, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))})
       .map((response: Response) => {return response});
   }
 
-  editTask(todo: Todo) {
+  editTask(todo: Task) {
     this.taskIsEdit.emit(todo);
   }
 
-  deleteTask(taskNumber: Number) {
-    return this.http.delete('http://localhost:3000/api/deleteTask/' + taskNumber,
-    { headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token) });
+  deleteTask(task_id: Number) {
+    return this.http.delete('http://localhost:3000/api/deleteTask/' + task_id,
+    { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
   }
 
 }

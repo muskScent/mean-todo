@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { TodoServiceService } from '../todo-service.service';
-import { Todo } from '../todo/todo.model';
+import { Task } from '../todo/task.model';
 
 @Component({
   selector: 'app-new-todo',
@@ -9,6 +9,7 @@ import { Todo } from '../todo/todo.model';
 })
 export class NewTodoComponent implements OnInit {
   @ViewChild('newTaskDescription') textAreaContent;
+  @Output() taskCreated = new EventEmitter<Task> ();
 
   constructor(private todoService: TodoServiceService) { }
 
@@ -16,9 +17,10 @@ export class NewTodoComponent implements OnInit {
   }
 
   onAdd() {
-    this.todoService.createTask(new Todo(this.textAreaContent.nativeElement.value, '' , 15))
+    this.todoService.createTask(new Task(this.textAreaContent.nativeElement.value))
       .subscribe(
-      (errors) => { console.log('errors occurred: ' + errors) });;
+        (response: any) => { this.taskCreated.emit(new Task(response.task_description)) },
+        (errors) => { console.log('errors occurred: ' + errors) });    
   }
 
 }

@@ -9,8 +9,8 @@ export class AuthService {
 
     login(login: String, password: String) {
       const body = JSON.stringify({
-        login: login,
-        password: password
+        user_login: login,
+        user_password: password
       });
       const headers = new Headers({ 'Content-Type': 'application/json'});
       return this.http.post('http://localhost:3000/users/login', body, {headers: headers})

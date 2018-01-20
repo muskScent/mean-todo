@@ -1,88 +1,65 @@
 const express = require('express');
-const router = express.Router();
 const jwt = require('jsonwebtoken');
 
-var Todo = require('../models/Todo.model');
+var User = require('../models/User.model');
 var Task = require('../models/Task.model');
 
-// Get all tasks by user~
-router.get('/todos', (req, res) => {
-  Todo.find({
-    _id: req.userData._id
-  })
-    .exec(function(err, todos) {
-      if (err) {
-        res.send('error has occured: ' + err);
-      } else {
-        res.json(todos);
-      }
-    })
+const router = express.Router();
+
+// Get all tasks by user
+router.get('/tasks', (req, res) => {
+  Task.findAll({
+    where: {
+      user_id: req.userData.user.user_id
+    }
+  }).then((tasks) => { 
+    tasks = tasks.map(task => task.dataValues);
+    res.json(tasks);
+  }).catch((err) => {
+    console.error('Sequelize error: ', err);
+  });
 });
 
 // Create task for user
 router.post('/newTask', (req, res) => {
-  var newTask = new Task();
-
-  newTask.description = req.body.description;
-  newTask.dueDate = 'ASAP';
-
-  Todo.findById(req.userData._id, function(err, todo) {
-    if (err) {
-      console.log('err: ' + err);
-    } else {
-      var tasks = todo.tasks;
-      tasks.push(newTask);
-      res.send(tasks);
-      todo.tasks = tasks;
-      todo.save(function(err) {        
-      });
-    }
+  Task.create({
+    user_id: req.userData.user.user_id,
+    task_description: req.body.task_description
+  })
+  .then((task) => {
+    res.json(task.dataValues);
+  })
+  .catch((err) => {
+    console.error('Sequelize error: ', err);
   });
 });
 
-// Delete a todo for a user
-router.delete('/deleteTask/:taskNumber', (req, res) => {
-  Todo.findById(req.userData._id, function(err, todo) {
-    if (err) {
-      console.log('err: ' + err);
-    } else {
-      var taskNumber = req.params.taskNumber;
-      var tasks = todo.tasks;
-      res.send(tasks);
-      for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i]._taskNumber === taskNumber) {
-          tasks.splice(i, 1);
-        }
-      }
-      todo.tasks = tasks;
-      todo.save(function(err) {        
-      })
+// Delete a task for a user
+router.delete('/deleteTask/:task_id', (req, res) => {
+  Task.destroy({
+    where: {
+      task_id: req.params.task_id,
+      user_id: req.userData.user.user_id
     }
   })
+  .then(() => { res.json('Task deleted') })
+  .catch((err) => {
+    console.error('Sequelize error: ', err);
+  });
 });
 
-// Update a todo
-router.put('/updateTodo/:_taskNumber/:description/:dueDate', function(req, res) {
-  Todo.findById(req.userData._id, function(err, todo) {
-    if (err) {
-      console.log('err: ' + err);
-    } else {
-      var _taskNumber = req.params._taskNumber;
-      var tasks = todo.tasks;
-      var tmp;
-      for (var i = 0; i < tasks.length; i++) {
-        console.log('entered task number: ' + _taskNumber);
-        if (i == _taskNumber - 1) {
-          tasks[i].description = req.params.description;
-          tasks[i].dueDate = req.params.dueDate;
-          tmp = tasks[i];
-        }
-      }
-      res.send(tmp);
-      todo.tasks = tasks;
-      todo.save(function(err) {        
-      })
+// Update a task for a user
+router.put('/updateTask/:task_id/:task_description', function (req, res) {
+  Task.update({
+    task_description: req.params.task_description
+  }, {
+    where: {
+      user_id: req.userData.user.user_id,
+      task_id: req.params.task_id
     }
+  }).then(() => { res.json('Update success') })
+    .catch((err) => {
+    console.error('Sequelize error: ', err);
   });
 });
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
-import { Todo } from './todo.model';
+import { Task } from './task.model';
 import { TodoServiceService } from '../todo-service.service';
 
 @Component({
@@ -11,9 +11,9 @@ import { TodoServiceService } from '../todo-service.service';
   }*/
 })
 export class TodoComponent implements OnInit {
-  @Input() task: Todo;
+  @Input() task: Task;
   @Output() editClicked = new EventEmitter<string>();
-  @Output() taskDeleted = new EventEmitter<Todo> ();
+  @Output() taskDeleted = new EventEmitter<Number> ();
   @ViewChild('textAreaContent') textAreaContent;
   defaultTextAreaContent: String = 'Enter new description here';
 
@@ -22,26 +22,28 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
   }
 
-  onEdit() { 
-    this.todoService.updateTask(this.task._taskNumber, this.textAreaContent.nativeElement.value, 'ASAP')
-      .subscribe(
-        (response: any) => { this.task.description = response.description },
-      (errors) => { console.log('errors occurred: ' + errors) });
-  } 
-
   resetTextArea() {
     this.textAreaContent.nativeElement.value = "reset";
   }
 
   clearTextArea() {
-    this.textAreaContent.nativeElement.value = '';
+    if (this.textAreaContent.nativeElement.value === this.defaultTextAreaContent) {
+      this.textAreaContent.nativeElement.value = '';
+    }
   }
 
-  onDelete() {
-    this.todoService.deleteTask(this.task._taskNumber)
+  onEdit() { 
+    this.todoService.updateTask(this.task.task_id, this.textAreaContent.nativeElement.value)
       .subscribe(
-        (response: any) => { this.taskDeleted.emit(this.task) },
-      (errors) => { console.log('errors occurred: ' + errors) });;
+        (response: any) => { this.task.task_description = this.textAreaContent.nativeElement.value },
+      (errors) => { console.log('errors occurred: ' + errors) });
+  } 
+
+  onDelete() {
+    this.todoService.deleteTask(this.task.task_id)
+      .subscribe(
+        (response: any) => { this.taskDeleted.emit(this.task.task_id) },
+      (errors) => { console.log('Cannot delete task: ' + errors) });;
   }
 
 }

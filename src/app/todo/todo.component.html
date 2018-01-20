@@ -1,6 +1,6 @@
 <article class="panel panel-default">
   <div class="panel-body description">
-    <p class="pull-left">{{ task.description }}</p>
+    <p class="pull-left">{{ task.task_description }}</p>
   </div>
   <footer class="panel-footer">
     <!-- <div class="dueDate">
@@ -11,8 +11,6 @@
       <button class="btn btn-primary" (click)="onDelete()">Delete</button>
     </div> 
     <hr>
-    <textarea #textAreaContent (click)="clearTextArea()" class="form-control" rows="4" cols="20">
-      {{ defaultTextAreaContent }} 
-    </textarea>
+    <textarea #textAreaContent (click)="clearTextArea()" class="form-control" rows="4" cols="20">{{ defaultTextAreaContent }}</textarea>
   </footer>
 </article>
