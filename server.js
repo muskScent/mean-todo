@@ -10,6 +10,8 @@ const bcrypt = require('bcryptjs');
 
 const Sequelize = require('sequelize');
 
+console.log('DB Url: ' , process.env.CLEARDB_DATABASE_URL);
+
 var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, { dialect:  'mysql' });
 
 // Connecting to database 
