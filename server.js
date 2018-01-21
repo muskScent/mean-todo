@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs');
 
 const Sequelize = require('sequelize');
 
-var connection = new Sequelize(process.env.DATABASE_URL);
+var connection = new Sequelize(process.env.DATABASE_URL, { dialect:  'mysql' });
 
 // Connecting to database 
 
