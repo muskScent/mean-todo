@@ -12,7 +12,10 @@ const Sequelize = require('sequelize');
 
 const connection = new Sequelize('heroku_23ec0927cbe2ae4', 'b4b11a226c955b', 'fc06dd64', {
   host: 'eu-cdbr-west-02.cleardb.net',
-  dialect: 'mysql'
+  dialect: 'mysql',
+  define: {
+    timestamps: false
+  }
 });
 
 // Connecting to database 
