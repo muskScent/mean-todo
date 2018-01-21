@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-var connection = new Sequelize(process.env.DATABASE_URL);
+var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL);
 
 var User = connection.define('users', {
   user_id: {
