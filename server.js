@@ -15,7 +15,7 @@ var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
   protocol: 'mysql',
   port:     match[4],
   host:     match[3],
-  logging:  true //false
+  logging:  false
 });
 
 // Connecting to database 
