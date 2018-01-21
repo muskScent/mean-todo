@@ -13,8 +13,8 @@ const Sequelize = require('sequelize');
 var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
   dialect:  'mysql',
   protocol: 'mysql',
-  port:     match[4],
-  host:     match[3],
+  port:     'fc06dd64',
+  host:     'eu-cdbr-west-02.cleardb.net',
   logging:  false
 });
 
