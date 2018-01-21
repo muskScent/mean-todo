@@ -10,12 +10,9 @@ const bcrypt = require('bcryptjs');
 
 const Sequelize = require('sequelize');
 
-var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
-  dialect:  'mysql',
-  protocol: 'mysql',
-  port:     'fc06dd64',
-  host:     'eu-cdbr-west-02.cleardb.net',
-  logging:  false
+const connection = new Sequelize('heroku_23ec0927cbe2ae4', 'b4b11a226c955b', 'fc06dd64', {
+  host: 'eu-cdbr-west-02.cleardb.net',
+  dialect: 'mysql'
 });
 
 // Connecting to database 
