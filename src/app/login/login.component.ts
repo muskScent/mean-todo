@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/core';
-import { AuthService } from '../auth-service.service';
+import { AuthenticationService } from '../authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/Router';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   myForm: FormGroup;
   @ViewChild('trick') trick:ElementRef;
 
-  constructor(private authService: AuthService, private renderer:Renderer) { }
+  constructor(private authenticationService: AuthenticationService, private renderer:Renderer) { }
 
   ngOnInit() {
     this.myForm = new FormGroup({
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let event = new MouseEvent('click', {bubbles: true});
-    this.authService.login(this.myForm.value.login, this.myForm.value.password)
+    this.authenticationService.login(this.myForm.value.login, this.myForm.value.password)
       .subscribe(
         data => {
           localStorage.setItem('token', data.token);

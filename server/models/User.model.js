@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize');
 
-var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
+var connection = new Sequelize('tasks_db', 'root', 'root', {
+  host: 'localhost',
+  dialect: 'mysql',
   define: {
     timestamps: false
   }
 });
-
 var User = connection.define('users', {
   user_id: {
     type: Sequelize.INTEGER,

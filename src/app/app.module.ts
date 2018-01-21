@@ -2,36 +2,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UserInfoComponent } from './user-info/user-info.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TodoComponent } from './todo/todo.component';
-import { TodosComponent } from './todos/todos.component';
-import { TodosListComponent } from './todos-list/todos-list.component';
+import { TaskComponent } from './task/task.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { TasksListComponent } from './tasks-list/tasks-list.component';
 import { HeaderComponent } from './header/header.component';
 import { routing } from './app.routing';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './auth-service.service';
+import { AuthenticationService } from './authentication.service';
 import { RouterModule, Router } from '@angular/router';
-import { TodoServiceService } from './todo-service.service';
-import { NewTodoComponent } from './new-todo/new-todo.component';
+import { TaskService } from './task.service';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserInfoComponent,
     LoginComponent,
-    TodoComponent,
-    TodosComponent,
-    TodosListComponent,
+    TaskComponent,
+    TasksComponent,
+    TasksListComponent,
     HeaderComponent,
-    NewTodoComponent
+    NewTaskComponent
   ],
   imports: [
     BrowserModule, FormsModule, routing, ReactiveFormsModule, HttpModule, HttpClientModule
   ],
-  providers: [AuthService, TodoServiceService],
+  providers: [AuthenticationService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

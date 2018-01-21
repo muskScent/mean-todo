@@ -1,23 +1,23 @@
 import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
-import { TodoServiceService } from '../todo-service.service';
-import { Task } from '../todo/task.model';
+import { TaskService } from '../task.service';
+import { Task } from '../task/task.model';
 
 @Component({
-  selector: 'app-new-todo',
-  templateUrl: './new-todo.component.html',
-  styleUrls: ['./new-todo.component.css']
+  selector: 'app-new-task',
+  templateUrl: './new-task.component.html',
+  styleUrls: ['./new-task.component.css']
 })
-export class NewTodoComponent implements OnInit {
+export class NewTaskComponent implements OnInit {
   @ViewChild('newTaskDescription') textAreaContent;
   @Output() taskCreated = new EventEmitter<Task> ();
 
-  constructor(private todoService: TodoServiceService) { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
   }
 
   onAdd() {
-    this.todoService.createTask(new Task(this.textAreaContent.nativeElement.value))
+    this.taskService.createTask(new Task(this.textAreaContent.nativeElement.value))
       .subscribe(
         (response: any) => { this.taskCreated.emit(new Task(response.task_description)) },
         (errors) => { console.log('errors occurred: ' + errors) });    

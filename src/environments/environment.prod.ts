@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'http://nodejs-angular-todolist.herokuapp.com'
 };

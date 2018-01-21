@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../todo/task.model';
-import { TodoServiceService } from '../todo-service.service';
+import { Task } from '../task/task.model';
+import { TaskService } from '../task.service';
 
 @Component({
-  selector: 'app-todos-list',
-  templateUrl: './todos-list.component.html',
-  styleUrls: ['./todos-list.component.css']
+  selector: 'app-tasks-list',
+  templateUrl: './tasks-list.component.html',
+  styleUrls: ['./tasks-list.component.css']
 })
-export class TodosListComponent implements OnInit {
+export class TasksListComponent implements OnInit {
   userId: String;
   tasks: Task[] = [];
 
-  constructor(private todoService: TodoServiceService) { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.todoService.getUserTasks()
+    this.taskService.getUserTasks()
       .subscribe(
         (response: any) => { this.tasks = response },
       (errors) => { console.log('errors occurred: ' + errors) });

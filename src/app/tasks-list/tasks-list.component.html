@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <app-todo 
+    <app-task 
         [task]="task" 
         (editClicked)="task.description = $event" 
         (taskDeleted)="deleteTask($event)"
         *ngFor="let task of tasks">
-    </app-todo>
+    </app-task>
   </div>
 </div>
-<app-new-todo (taskCreated)="addTask($event)"></app-new-todo>
+<app-new-task (taskCreated)="addTask($event)"></app-new-task>

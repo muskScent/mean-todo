@@ -10,12 +10,14 @@ const bcrypt = require('bcryptjs');
 
 const Sequelize = require('sequelize');
 
-var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
+// Connecting to database 
+var connection = new Sequelize('tasks_db', 'root', 'root', {
+  host: 'localhost',
+  dialect: 'mysql',
   define: {
     timestamps: false
   }
 });
-// Connecting to database 
 
 // Get our API routes
 const api = require('./server/routes/api');
