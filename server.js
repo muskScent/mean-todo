@@ -10,9 +10,11 @@ const bcrypt = require('bcryptjs');
 
 const Sequelize = require('sequelize');
 
-console.log('OKKKKKKKKKKK');
-
-var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL);
+var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
+  define: {
+    timestamps: false
+  }
+});
 // Connecting to database 
 
 // Get our API routes

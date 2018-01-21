@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize');
 
-var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL);
+var connection = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
+  define: {
+    timestamps: false
+  }
+});
 
 var Task = connection.define('tasks', {
   task_id: {
