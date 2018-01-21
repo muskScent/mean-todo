@@ -202,7 +202,7 @@ var AuthService = (function () {
             user_password: password
         });
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
-        return this.http.post('http://localhost:3000/users/login', body, { headers: headers })
+        return this.http.post('http://nodejs-angular-todolist.herokuapp.com/users/login', body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.json()); });
     };
@@ -477,16 +477,16 @@ var TodoServiceService = (function () {
         this.taskIsEdit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
     TodoServiceService.prototype.getUserTasks = function () {
-        return this.http.get('http://localhost:3000/api/tasks', {
+        return this.http.get('http://nodejs-angular-todolist.herokuapp.com/api/tasks', {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
         })
             .map(function (response) { return response; });
     };
     TodoServiceService.prototype.createTask = function (task) {
-        return this.http.post('http://localhost:3000/api/newTask', task, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
+        return this.http.post('http://nodejs-angular-todolist.herokuapp.com/api/newTask', task, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
     };
     TodoServiceService.prototype.updateTask = function (task_id, newDescription) {
-        return this.http.put('http://localhost:3000/api/updateTask/' + task_id + '/' + newDescription, null, {
+        return this.http.put('http://nodejs-angular-todolist.herokuapp.com/api/updateTask/' + task_id + '/' + newDescription, null, {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
         })
             .map(function (response) { return response; });
@@ -495,7 +495,7 @@ var TodoServiceService = (function () {
         this.taskIsEdit.emit(todo);
     };
     TodoServiceService.prototype.deleteTask = function (task_id) {
-        return this.http.delete('http://localhost:3000/api/deleteTask/' + task_id, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
+        return this.http.delete('http://nodejs-angular-todolist.herokuapp.com/api/deleteTask/' + task_id, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
     };
     TodoServiceService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
