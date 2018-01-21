@@ -10,18 +10,18 @@ export class TodoServiceService {
   constructor(private http: HttpClient) {}
 
   getUserTasks() {
-    return this.http.get('http://nodejs-angular-todolist.herokuapp.com/api/tasks', {
+    return this.http.get('http://localhost:3000/api/tasks', {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))})
       .map((response: Response) => {return response});
   }
 
   createTask(task: Task) {
-    return this.http.post('http://nodejs-angular-todolist.herokuapp.com/api/newTask', task, 
+    return this.http.post('http://localhost:3000/api/newTask', task, 
     { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
   }
 
   updateTask(task_id:Number, newDescription: String) {
-    return this.http.put('http://nodejs-angular-todolist.herokuapp.com/api/updateTask/' + task_id + '/' + newDescription, null, {
+    return this.http.put('http://localhost:3000/api/updateTask/' + task_id + '/' + newDescription, null, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))})
       .map((response: Response) => {return response});
   }
@@ -31,7 +31,7 @@ export class TodoServiceService {
   }
 
   deleteTask(task_id: Number) {
-    return this.http.delete('http://nodejs-angular-todolist.herokuapp.com/api/deleteTask/' + task_id,
+    return this.http.delete('http://localhost:3000/api/deleteTask/' + task_id,
     { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
   }
 

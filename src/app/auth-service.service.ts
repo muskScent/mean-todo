@@ -13,7 +13,7 @@ export class AuthService {
         user_password: password
       });
       const headers = new Headers({ 'Content-Type': 'application/json'});
-      return this.http.post('http://nodejs-angular-todolist.herokuapp.com/users/login', body, {headers: headers})
+      return this.http.post('http://localhost:3000/users/login', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
     }
