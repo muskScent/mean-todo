@@ -5,11 +5,10 @@ if (!global.hasOwnProperty('db')) {
     if (process.env.CLEARDB_DATABASE_URL) {
       // the application is executed on Heroku ... use the postgres database
       sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
-        dialect:  'mysql',
-        protocol: 'mysql',
-        port:     match[4],
-        host:     match[3],
-        logging:  true //false
+        dialect: 'mysql',
+        define: {
+          timestamps: false
+        }
       })
     } else {
       // the application is executed on the local machine ... use mysql
