@@ -16,6 +16,7 @@ import { RouterModule, Router } from '@angular/router';
 import { TaskService } from './task.service';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LogoutComponent } from './logout/logout.component';
     TasksListComponent,
     HeaderComponent,
     NewTaskComponent,
-    LogoutComponent
+    LogoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule, FormsModule, routing, ReactiveFormsModule, HttpModule, HttpClientModule

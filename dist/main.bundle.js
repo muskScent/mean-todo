@@ -94,12 +94,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__task_service__ = __webpack_require__("../../../../../src/app/task.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__new_task_new_task_component__ = __webpack_require__("../../../../../src/app/new-task/new-task.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__logout_logout_component__ = __webpack_require__("../../../../../src/app/logout/logout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__register_register_component__ = __webpack_require__("../../../../../src/app/register/register.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -129,7 +131,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__tasks_list_tasks_list_component__["a" /* TasksListComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__header_header_component__["a" /* HeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__new_task_new_task_component__["a" /* NewTaskComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__logout_logout_component__["a" /* LogoutComponent */]
+                __WEBPACK_IMPORTED_MODULE_15__logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__register_register_component__["a" /* RegisterComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["c" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_9__app_routing__["a" /* routing */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* ReactiveFormsModule */], __WEBPACK_IMPORTED_MODULE_10__angular_http__["c" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */]
@@ -520,6 +523,67 @@ var NewTaskComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__task_service__["a" /* TaskService */]])
     ], NewTaskComponent);
     return NewTaskComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/register/register.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/register/register.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<form action=\"\">\n  <div class=\"form-group\">\n    <label for=\"userName\">Enter chosen user name</label>\n    <input type=\"text\" class=\"form-control\" id=\"userName\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"password\">Enter chosen password</label>\n    <input type=\"password\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"confirmPassword\">Confirm password</label>\n    <input type=\"password\" class=\"form-control\">\n  </div>\n  <button class=\"btn btn-primary\">Submit</button>\n</form>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/register/register.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RegisterComponent = (function () {
+    function RegisterComponent() {
+    }
+    RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-register',
+            template: __webpack_require__("../../../../../src/app/register/register.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/register/register.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], RegisterComponent);
+    return RegisterComponent;
 }());
 
 
