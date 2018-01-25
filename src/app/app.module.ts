@@ -15,6 +15,7 @@ import { AuthenticationService } from './authentication.service';
 import { RouterModule, Router } from '@angular/router';
 import { TaskService } from './task.service';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NewTaskComponent } from './new-task/new-task.component';
     TasksComponent,
     TasksListComponent,
     HeaderComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule, FormsModule, routing, ReactiveFormsModule, HttpModule, HttpClientModule
