@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { TasksListComponent } from './tasks-list/tasks-list.component';
 
 const APP_ROUTES: Routes = [
-    { path: '', redirectTo: '/tasks', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'tasks', component: TasksComponent },
     { path: 'taskslist', component: TasksListComponent},
     { path: 'login', component: LoginComponent }
