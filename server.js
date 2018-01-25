@@ -7,17 +7,7 @@ const verifyToken = require('./server/authentication/verifytoken');
 const morgan = require('morgan');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
-
-const Sequelize = require('sequelize');
-
-// Connecting to database 
-var connection = new Sequelize('tasks_db', 'root', 'root', {
-  host: 'localhost',
-  dialect: 'mysql',
-  define: {
-    timestamps: false
-  }
-});
+const db = require('./server/models');
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -57,12 +47,8 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || '3000';
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+db.sequelize.sync().then(function() {
+  http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
+  });
+});

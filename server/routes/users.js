@@ -3,12 +3,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
-const User = require('../models/User.model');
+const db = require('../models');
 
 const router = express.Router();
 
 router.post('/login', (req, res) => {
-  User.findOne({
+  db.User.findOne({
       where: {
         user_login: req.body.user_login
       }    

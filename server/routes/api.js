@@ -1,14 +1,13 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
-var User = require('../models/User.model');
-var Task = require('../models/Task.model');
+const db = require('../models');
 
 const router = express.Router();
 
 // Get all tasks by user
 router.get('/tasks', (req, res) => {
-  Task.findAll({
+  db.Task.findAll({
     where: {
       user_id: req.userData.user.user_id
     }
@@ -22,7 +21,7 @@ router.get('/tasks', (req, res) => {
 
 // Create task for user
 router.post('/newTask', (req, res) => {
-  Task.create({
+  db.Task.create({
     user_id: req.userData.user.user_id,
     task_description: req.body.task_description
   })
@@ -36,7 +35,7 @@ router.post('/newTask', (req, res) => {
 
 // Delete a task for a user
 router.delete('/deleteTask/:task_id', (req, res) => {
-  Task.destroy({
+  db.Task.destroy({
     where: {
       task_id: req.params.task_id,
       user_id: req.userData.user.user_id
@@ -50,7 +49,7 @@ router.delete('/deleteTask/:task_id', (req, res) => {
 
 // Update a task for a user
 router.put('/updateTask/:task_id/:task_description', function (req, res) {
-  Task.update({
+  db.Task.update({
     task_description: req.params.task_description
   }, {
     where: {
