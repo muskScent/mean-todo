@@ -15,7 +15,8 @@ var verifyToken = function (req, res, next) {
         next();
     } else {
         // Forbidden
-        res.sendStatus(403);
+        //res.sendStatus(403);
+        res.redirect('/login');
     }
 }
 
