@@ -35,9 +35,4 @@ export class LoginComponent implements OnInit {
       );
     this.myForm.reset();
   }
-
-  onClick() {
-    console.log('on click');
-  }
-
 }

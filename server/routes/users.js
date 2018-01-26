@@ -37,8 +37,8 @@ router.post('/register', (req, res) => {
                 user_firstname: req.body.user_firstname,
                 user_lastname: req.body.user_lastname,
                 user_login: req.body.user_login,
-                user_password: bcrypt.hashSync(req.body.user_password, 8)
-            })
+                user_password: req.body.user_password
+            });
         } else {
             res.redirect('/register');
         }

@@ -1,0 +1,12 @@
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" (click)="setLogin()">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="setRegister()">Register</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <app-login *ngIf="login"></app-login>
+  <app-register *ngIf="register"></app-register>
+</div>
