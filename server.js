@@ -9,8 +9,6 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const db = require('./server/models/index.js');
 
-console.log("UPDATED");
-
 // Get our API routes
 const api = require('./server/routes/api');
 // Get our users authentication routes

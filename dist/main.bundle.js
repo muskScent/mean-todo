@@ -398,7 +398,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/logout/logout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<button class=\"btn btn-danger\" (click)=\"logout()\">Logout</button>\n<a #trick  [routerLink]=\"['/login']\"></a>"
+module.exports = "<button class=\"btn btn-danger\" (click)=\"logout()\">Logout</button>\r\n<a #trick  [routerLink]=\"['/login']\"></a>"
 
 /***/ }),
 
@@ -550,7 +550,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form action=\"\">\n  <div class=\"form-group\">\n    <label for=\"userName\">Enter chosen user name</label>\n    <input type=\"text\" class=\"form-control\" id=\"userName\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"password\">Enter chosen password</label>\n    <input type=\"password\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"confirmPassword\">Confirm password</label>\n    <input type=\"password\" class=\"form-control\">\n  </div>\n  <button class=\"btn btn-primary\">Submit</button>\n</form>\n"
+module.exports = "<form action=\"\">\r\n  <div class=\"form-group\">\r\n    <label for=\"userName\">Enter chosen user name</label>\r\n    <input type=\"text\" class=\"form-control\" id=\"userName\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"password\">Enter chosen password</label>\r\n    <input type=\"password\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"confirmPassword\">Confirm password</label>\r\n    <input type=\"password\" class=\"form-control\">\r\n  </div>\r\n  <button class=\"btn btn-primary\">Submit</button>\r\n</form>\r\n"
 
 /***/ }),
 

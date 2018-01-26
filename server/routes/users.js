@@ -25,33 +25,24 @@ router.post('/login', (req, res) => {
   });
 });
 
-// router.post('/register', (req, res) => {
-//   // if login already exists, redirect to register, error message, else create user
-//   Todo.findOne({
-//     'userData.login': req.body.login
-//   }, (err, todo) => {
-//     if (err) {
-//       console.log('An error occurred');
-//       router.redirect('/register');
-//     } else {
-//       if (todo) {
-//         res.send('User already exists');
-//         res.redirect('/register');
-//       } else {
-//         var newTodo = new Todo();
-//         newTodo._id = req.body.login;
-//         newTodo.userData.login = req.body.login;
-//         newTodo.userData.firstname = req.body.firstname;
-//         newTodo.userData.lastname = req.body.lastname;
-//         newTodo.userData.password = req.body.password;
-//         newTodo.save(function (err) {
-//           if (err) {
-//             console.log('Error while creating new user: ' + err);
-//           }
-//         });
-//       }
-//     }
-//   });
-// });
+router.post('/register', (req, res) => {
+    // Check that entered login doesn't exist
+    db.User.findOne({
+        where: {
+            user_login: req.body.user_login
+        }
+    }).then((user) => {
+        if (user === null) { // Entered login doesn't exist
+            db.User.create({
+                user_firstname: req.body.user_firstname,
+                user_lastname: req.body.user_lastname,
+                user_login: req.body.user_login,
+                user_password: bcrypt.hashSync(req.body.user_password, 8)
+            })
+        } else {
+            res.redirect('/register');
+        }
+    })
+})
 
 module.exports = router;
