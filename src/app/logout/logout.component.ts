@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/Router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -9,17 +9,17 @@ import { Router } from '@angular/Router';
 export class LogoutComponent implements OnInit {
   @ViewChild('trick') trick:ElementRef;
 
-  constructor(private renderer:Renderer) {}
+  constructor(private renderer: Renderer, private router: Router) {}
 
   ngOnInit() {
   }
 
-  logout() {
+  logout() {    
     let event = new MouseEvent('click', {bubbles: true});
     localStorage.clear();
-    this.renderer.invokeElementMethod(
-      this.trick.nativeElement, 'dispatchEvent', [event]);
-    // this.router.navigate(['/']);
+    // this.renderer.invokeElementMethod(
+    //   this.trick.nativeElement, 'dispatchEvent', [event]);
+    this.router.navigate(['/']);    
   }
 
 }

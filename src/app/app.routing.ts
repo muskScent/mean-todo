@@ -11,6 +11,7 @@ const APP_ROUTES: Routes = [
     { path: 'taskslist', component: TasksListComponent},
     { path: 'login', component: LoginComponent },
     { path: 'index', component: IndexComponent },
+    { path: 'register', component: RegisterComponent }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
