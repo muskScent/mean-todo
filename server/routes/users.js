@@ -39,7 +39,9 @@ router.post('/register', (req, res) => {
                 user_login: req.body.user_login,
                 user_password: req.body.user_password
             });
+            res.json({ registrationSuccess: true });
         } else {
+            res.json({ registrationSuccess: false });
             res.redirect('/register');
         }
     })

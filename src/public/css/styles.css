@@ -1,0 +1,10 @@
+* {
+    font-size: 16px;
+    line-height: 2;
+ }
+
+ .navbar {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}

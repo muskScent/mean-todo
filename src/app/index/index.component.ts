@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class IndexComponent implements OnInit {
   login: boolean = true;
   register: boolean = false;
+  
 
   constructor() { }
 

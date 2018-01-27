@@ -8,17 +8,19 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  registerSuccess: boolean = false;
+  registerFailure: boolean = false;
 
   constructor(private authenticationService: AuthenticationService) {}
 
   ngOnInit() {}
 
   onSubmit(registrationForm: NgForm) {
-    console.log(registrationForm);
     this.authenticationService.register(registrationForm.value.firstName, registrationForm.value.lastName, 
     registrationForm.value.userName, registrationForm.value.password).subscribe(
-      () => {
-        alert('Successfully registered');
+      (response) => {
+        this.registerSuccess = response.registrationSuccess;
+        this.registerFailure = !response.registrationSuccess;
       }
     );;
   }
