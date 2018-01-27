@@ -19,6 +19,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
+import { PasswordMatchValidatorDirective } from './custom-directives/password-match-validator.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     LogoutComponent,
     RegisterComponent,
     IndexComponent,
-    FooterComponent
+    FooterComponent,
+    PasswordMatchValidatorDirective
   ],
   imports: [
     BrowserModule, FormsModule, routing, ReactiveFormsModule, HttpModule, HttpClientModule
