@@ -10,6 +10,7 @@ import { AuthenticationService } from '../authentication.service';
 export class RegisterComponent implements OnInit {
   registerSuccess: boolean = false;
   registerFailure: boolean = false;
+  submitted: boolean = false;
 
   constructor(private authenticationService: AuthenticationService) {}
 
@@ -21,6 +22,9 @@ export class RegisterComponent implements OnInit {
       (response) => {
         this.registerSuccess = response.registrationSuccess;
         this.registerFailure = !response.registrationSuccess;
+        if (this.registerSuccess) {
+          this.submitted = true;
+        }
       }
     );;
   }
