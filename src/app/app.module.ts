@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
 import { PasswordMatchValidatorDirective } from './custom-directives/password-match-validator.directive';
+import { ShortenPipe } from './custom-directives/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PasswordMatchValidatorDirective } from './custom-directives/password-ma
     RegisterComponent,
     IndexComponent,
     FooterComponent,
-    PasswordMatchValidatorDirective
+    PasswordMatchValidatorDirective,
+    ShortenPipe
   ],
   imports: [
     BrowserModule, FormsModule, routing, ReactiveFormsModule, HttpModule, HttpClientModule

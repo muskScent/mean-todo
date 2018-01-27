@@ -1,6 +1,6 @@
 <article class="panel panel-default">
   <div class="panel-body description">
-    <p class="pull-left"><strong>{{ task.task_description }}</strong></p>
+    <p class="pull-left"><strong>{{ task.task_description | shorten }}</strong></p>
   </div>
   <footer class="panel-footer">
     <div class="config">
