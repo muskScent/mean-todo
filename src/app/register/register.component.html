@@ -52,7 +52,7 @@
       ngModel
       name="passwordConfirmed"
       #passwordConfirmed="ngModel">
-      <div class="alert alert-warning" role="alert" *ngIf="passwordConfirmed.invalid && passwordConfirmed.touched">Password mismatch</div>
+      <div class="alert alert-warning" role="alert" *ngIf="passwordConfirmed.invalid && passwordConfirmed.touched">The two passwords do not match</div>
   </div>
   <button
     class="btn btn-success btn-lg btn-block"
