@@ -8,7 +8,9 @@
       <button class="btn btn-primary" (click)="onDelete()">Delete</button>
       <button *ngIf="editing" class="btn btn-primary" (click)="onSave()">Save</button>
     </div> 
-    <hr>
-    <textarea *ngIf="editing" [(ngModel)]="task.task_description" #textAreaContent (click)="clearTextArea()" class="form-control" >{{ defaultTextAreaContent }}</textarea>
+    <div *ngIf="editing">
+      <hr>
+      <textarea [(ngModel)]="task.task_description" #textAreaContent (click)="clearTextArea()" class="form-control" ></textarea>
+    </div>
   </footer>
 </article>

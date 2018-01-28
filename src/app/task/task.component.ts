@@ -15,7 +15,6 @@ export class TaskComponent implements OnInit {
   @Output() editClicked = new EventEmitter<string>();
   @Output() taskDeleted = new EventEmitter<Number> ();
   @ViewChild('textAreaContent') textAreaContent;
-  defaultTextAreaContent: String = 'Enter new description here';
   editing: boolean = false;
 
   constructor(private taskService: TaskService) { }
@@ -28,9 +27,9 @@ export class TaskComponent implements OnInit {
   }
 
   clearTextArea() {
-    if (this.textAreaContent.nativeElement.value === this.defaultTextAreaContent) {
-      this.textAreaContent.nativeElement.value = '';
-    }
+    // if (this.textAreaContent.nativeElement.value === this.defaultTextAreaContent) {
+    //   this.textAreaContent.nativeElement.value = '';
+    // }
   }
 
   onEdit() { 

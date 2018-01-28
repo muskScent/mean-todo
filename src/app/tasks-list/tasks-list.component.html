@@ -6,6 +6,6 @@
         (taskDeleted)="deleteTask($event)"
         *ngFor="let task of tasks">
     </app-task>
-  </div>
+    <app-new-task (taskCreated)="addTask($event)"></app-new-task>
+  </div>  
 </div>
-<app-new-task (taskCreated)="addTask($event)"></app-new-task>

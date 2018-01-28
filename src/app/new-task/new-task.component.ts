@@ -10,6 +10,7 @@ import { Task } from '../task/task.model';
 export class NewTaskComponent implements OnInit {
   @ViewChild('newTaskDescription') textAreaContent;
   @Output() taskCreated = new EventEmitter<Task> ();
+  taskDescription: String = "rrr";
 
   constructor(private taskService: TaskService) { }
 
@@ -17,10 +18,12 @@ export class NewTaskComponent implements OnInit {
   }
 
   onAdd() {
-    this.taskService.createTask(new Task(this.textAreaContent.nativeElement.value))
+    if (this.textAreaContent.nativeElement.value != "") {
+      this.taskService.createTask(new Task(this.textAreaContent.nativeElement.value))
       .subscribe(
         (response: any) => { this.taskCreated.emit(new Task(response.task_description)) },
         (errors) => { console.log('errors occurred: ' + errors) });    
+    }
   }
 
 }
