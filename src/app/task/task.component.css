@@ -1,13 +1,14 @@
-/* .description {
-    display: inline-block;
-    font-style: italic;
-    font-size: 12px;
-    width: 80%;
-} */
+button {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    border-radius: 0%;
+}
 
-/* .config {
-    display: inline-block;
-    font-style: right;
-    font-size: 12px;
-    width: 40%;
-} */
+button:hover {
+    color: #000;
+    background-color: transparent;
+    border-color: #000000;
+}
