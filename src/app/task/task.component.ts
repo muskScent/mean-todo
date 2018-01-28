@@ -16,6 +16,7 @@ export class TaskComponent implements OnInit {
   @Output() taskDeleted = new EventEmitter<Number> ();
   @ViewChild('textAreaContent') textAreaContent;
   defaultTextAreaContent: String = 'Enter new description here';
+  editing: boolean = false;
 
   constructor(private taskService: TaskService) { }
 
@@ -33,11 +34,16 @@ export class TaskComponent implements OnInit {
   }
 
   onEdit() { 
+    this.editing = !this.editing;
+  } 
+
+  onSave() {
+    this.editing = !this.editing;
     this.taskService.updateTask(this.task.task_id, this.textAreaContent.nativeElement.value)
       .subscribe(
         (response: any) => { this.task.task_description = this.textAreaContent.nativeElement.value },
       (errors) => { console.log('errors occurred: ' + errors) });
-  } 
+  }
 
   onDelete() {
     this.taskService.deleteTask(this.task.task_id)
