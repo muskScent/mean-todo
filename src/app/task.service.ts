@@ -16,8 +16,8 @@ export class TaskService {
       .map((response: Response) => {return response});
   }
 
-  createTask(task: Task) {
-    return this.http.post(environment.apiUrl + '/api/newTask', task, 
+  createTask(newTaskDescription: String) {
+    return this.http.post(environment.apiUrl + '/api/newTask', { task_description: newTaskDescription }, 
     { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
   }
 

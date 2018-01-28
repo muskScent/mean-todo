@@ -19,9 +19,9 @@ export class NewTaskComponent implements OnInit {
 
   onAdd() {
     if (this.textAreaContent.nativeElement.value != "") {
-      this.taskService.createTask(new Task(this.textAreaContent.nativeElement.value))
+      this.taskService.createTask(this.textAreaContent.nativeElement.value)
       .subscribe(
-        (response: any) => { this.taskCreated.emit(new Task(response.task_description)) },
+        (response: any) => { this.taskCreated.emit(new Task(response.task_id, response.task_description)) },
         (errors) => { console.log('errors occurred: ' + errors) });    
     }
   }

@@ -45,6 +45,7 @@ export class TaskComponent implements OnInit {
   }
 
   onDelete() {
+    console.log('Deleting id: ' + this.task.task_id);
     this.taskService.deleteTask(this.task.task_id)
       .subscribe(
         (response: any) => { this.taskDeleted.emit(this.task.task_id) },
