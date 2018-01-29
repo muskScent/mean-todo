@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
-import { Task } from './task.model';
+import { Task } from '../shared/task.model';
 import { TaskService } from '../shared/task.service';
 
 @Component({
@@ -38,7 +38,6 @@ export class TaskComponent implements OnInit {
   }
 
   onDelete() {
-    console.log('Deleting id: ' + this.task.task_id);
     this.taskService.deleteTask(this.task.task_id)
       .subscribe(
         (response: any) => { this.taskDeleted.emit(this.task.task_id); },

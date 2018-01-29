@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { TaskService } from '../shared/task.service';
-import { Task } from '../task/task.model';
+import { Task } from '../shared/task.model';
 
 @Component({
   selector: 'app-new-task',
