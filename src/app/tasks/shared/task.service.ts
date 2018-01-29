@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Task } from './task/task.model';
+import { Task } from '../task/task.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class TaskService {
@@ -13,18 +13,18 @@ export class TaskService {
   getUserTasks() {
     return this.http.get(environment.apiUrl + '/api/tasks', {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))})
-      .map((response: Response) => {return response});
+      .map((response: Response) => response);
   }
 
   createTask(newTaskDescription: String) {
-    return this.http.post(environment.apiUrl + '/api/newTask', { task_description: newTaskDescription }, 
+    return this.http.post(environment.apiUrl + '/api/newTask', { task_description: newTaskDescription },
     { headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')) });
   }
 
-  updateTask(task_id:Number, newDescription: String) {
+  updateTask(task_id: Number, newDescription: String) {
     return this.http.put(environment.apiUrl + '/api/updateTask/' + task_id + '/' + newDescription, null, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))})
-      .map((response: Response) => {return response});
+      .map((response: Response) => response);
   }
 
   editTask(task: Task) {

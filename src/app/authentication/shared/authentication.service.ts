@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { Http, Headers, Response } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
-import { Observable } from "rxjs";
-import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -41,6 +41,6 @@ export class AuthenticationService {
     }
 
     getCurrentUser() {
-      
+
     }
 }

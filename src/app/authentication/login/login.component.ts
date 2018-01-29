@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer, ViewChild, ElementRef } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../shared/authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/Router';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,9 +12,9 @@ import { HttpModule } from '@angular/http';
 })
 export class LoginComponent implements OnInit {
   myForm: FormGroup;
-  @ViewChild('trick') trick:ElementRef;
+  @ViewChild('trick') trick: ElementRef;
 
-  constructor(private authenticationService: AuthenticationService, private renderer:Renderer) { }
+  constructor(private authenticationService: AuthenticationService, private renderer: Renderer) { }
 
   ngOnInit() {
     this.myForm = new FormGroup({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    let event = new MouseEvent('click', {bubbles: true});
+    const event = new MouseEvent('click', {bubbles: true});
     this.authenticationService.login(this.myForm.value.login, this.myForm.value.password)
       .subscribe(
         data => {

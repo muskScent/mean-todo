@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../../authentication/shared/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +7,7 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userLoggedIn: boolean = true;
+  userLoggedIn:  true;
 
   constructor(private authenticationService: AuthenticationService) { }
 

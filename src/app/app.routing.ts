@@ -1,9 +1,9 @@
-import  { Routes, RouterModule } from '@angular/router';
-import { TasksComponent } from './tasks/tasks.component';
-import { LoginComponent } from './login/login.component';
-import { TasksListComponent } from './tasks-list/tasks-list.component';
-import { RegisterComponent } from './register/register.component';
-import { IndexComponent } from './index/index.component';
+import { Routes, RouterModule } from '@angular/router';
+import { TasksComponent } from './tasks/display/tasks.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import { RegisterComponent } from './authentication/register/register.component';
+import { IndexComponent } from './authentication/index/index.component';
 
 const APP_ROUTES: Routes = [
     { path: '', redirectTo: '/index', pathMatch: 'full' },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task/task.model';
-import { TaskService } from '../task.service';
+import { TaskService } from '../shared/task.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -21,7 +21,7 @@ export class TasksListComponent implements OnInit {
   }
 
   deleteTask(event: any) {
-    this.tasks = this.tasks.filter((task) => { 
+    this.tasks = this.tasks.filter((task) => {
       return task.task_id != event
     })
   }

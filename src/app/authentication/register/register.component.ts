@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(registrationForm: NgForm) {
-    this.authenticationService.register(registrationForm.value.firstName, registrationForm.value.lastName, 
+    this.authenticationService.register(registrationForm.value.firstName, registrationForm.value.lastName,
     registrationForm.value.userName, registrationForm.value.password).subscribe(
       (response) => {
         this.registerSuccess = response.registrationSuccess;
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
           this.submitted = true;
         }
       }
-    );;
+    );
   }
 
 }
